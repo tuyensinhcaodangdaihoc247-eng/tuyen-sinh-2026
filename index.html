@@ -2298,5 +2298,18 @@
         // Khởi chạy ứng dụng khi trang đã tải xong
         document.addEventListener('DOMContentLoaded', initApp);
     </script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxQs63ZZ3Le4EoAVDG12hO4S5FHsZ_XNfY_iJT6_Aqtcsd1IzfWSezQcvi4PzEWtY3W/exec';
+const form = document.getElementById('registrationForm');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => {
+        alert("Đăng ký thành công!");
+        form.reset();
+    })
+    .catch(error => console.error('Lỗi!', error.message));
+});
 </body>
+
 </html>
